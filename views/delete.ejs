@@ -1,0 +1,75 @@
+
+
+
+        <tbody>
+            <% for(var i = 0; i < docs.length ; i++) { %>
+                <tr>
+                    <th scope="row"><%= docs[i].roll %></th>
+                    <td><%= docs[i].name %></td>
+                    <td><%= docs[i].clas %></td>
+                    <td><%= docs[i].group %></td>
+                    <td><%= docs[i].dob %></td>
+                    <td><%= docs[i].mark %></td>
+                    <td><a href="/delete/<%= docs[i]._id%>" class="btn btn-danger">Delete</a></td>
+                    <td><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Edit</button></td>
+                  </tr>
+            <% } %>
+        </tbody>
+</table>
+
+
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Info</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form action="/edit" method="post">
+
+
+            <table class="table table-success table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Roll No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Group</th>
+                    <th scope="col">D.O.B</th>
+                    <th scope="col">Marks</th>
+                  </tr>
+                </thead>
+        
+                <tbody>
+                    <% for(var i = 0; i < docs.length ; i++) { %>
+                        <tr>
+                            <th scope="row"><input type="text" value="<%= docs[i].roll %>" name="roll"></th>
+                            <td><input type="text" value="<%= docs[i].name %>" name="name"></td>
+                            <td><input type="text" value="<%= docs[i].clas %>" name="clas"></td>
+                            <td><input type="text" value="<%= docs[i].group %>" name="group"></td>
+                            <td><input type="date" value="<%= docs[i].dob %>" name="dob"></td>
+                            <td><input type="text" value="<%= docs[i].mark %>" name="mark"></td>
+                            <td><input type="hidden" value="<%= docs[i]._id %>" name="id"></td>
+                          </tr>
+                    <% } %>
+                </tbody>
+        </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
