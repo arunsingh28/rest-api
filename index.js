@@ -16,7 +16,7 @@ mongoose.connect(URI,{useNewUrlParser: true, useUnifiedTopology: true, useFindAn
 
 
 // setup engine
-app.set('views', path.join(__dirname, 'Views'));
+app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
